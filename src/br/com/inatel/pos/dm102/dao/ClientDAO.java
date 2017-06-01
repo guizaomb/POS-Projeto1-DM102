@@ -59,6 +59,5 @@ public class ClientDAO extends DataBase<Client, Serializable>  {
 		return clients;
 
 	}
-
 	
 }
