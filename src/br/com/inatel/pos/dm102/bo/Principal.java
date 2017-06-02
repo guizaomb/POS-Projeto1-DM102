@@ -23,8 +23,8 @@ public class Principal {
 				switch (option) {
 					
 				case 1: {
-					Customer customer = new Customer ();
-					customer.newClient();
+					ClientController clientController = new ClientController ();
+					clientController.newClient();
 					break;
 					}
 				case 2: {
@@ -32,8 +32,8 @@ public class Principal {
 					serviceCalls.registerService();
 				}
 				case 3: {
-					Customer customer = new Customer();
-					customer.listClients();					
+					ClientController clientController = new ClientController();
+					clientController.listClients();					
 				}
 				case 4: {
 					ServiceCalls serviceCalls = new ServiceCalls();

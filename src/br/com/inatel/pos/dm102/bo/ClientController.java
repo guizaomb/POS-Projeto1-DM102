@@ -5,7 +5,7 @@ import java.util.Scanner;
 import br.com.inatel.pos.dm102.dao.ClientDAO;
 import br.com.inatel.pos.dm102.model.Client;
 
-public class Customer {
+public class ClientController {
 	
 	Scanner in = new Scanner(System.in);
 	ClientDAO clientDAO = new ClientDAO();
@@ -30,10 +30,12 @@ public class Customer {
 			client.setDocumentNumber(in.nextLine());
 			System.out.println("* Entre com o nome:");
 			client.setName(in.nextLine());
+			System.out.println("* Entre com o endereço:");
+			client.setAddress(in.nextLine());
 			System.out.println("* Entre com o telefone:");
 			client.setPhone(in.nextLine());
 			
-			clientDAO.newClient(client);
+			clientDAO.saveClient(client);
 			
 			return 0;
 								
@@ -45,10 +47,12 @@ public class Customer {
 			client.setDocumentNumber(in.nextLine());
 			System.out.println("* Entre com a Razão Social:");
 			client.setName(in.nextLine());
+			System.out.println("* Entre com o endereço:");
+			client.setAddress(in.nextLine());
 			System.out.println("* Entre com o telefone:");
 			client.setPhone(in.nextLine());
 	
-			clientDAO.newClient(client);
+			clientDAO.saveClient(client);
 			
 			return 0;
 			
@@ -68,6 +72,7 @@ public class Customer {
 			System.out.println("* Tipo Documento: " +client.getDocumentType());
 			System.out.println("* Documento Número: " +client.getDocumentNumber());
 			System.out.println("* Nome: " +client.getName());
+			System.out.println("* Endereço: " +client.getAddress());
 			System.out.println("* Telefone: " +client.getPhone());
 			
 		}

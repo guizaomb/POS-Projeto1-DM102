@@ -18,13 +18,13 @@ public class ServiceDAO extends DataBase<Service, Serializable>  {
 
 	public void newService(Service service) {
 
-		String query = "INSERT INTO public.service(date, serviceType, idcliente_fk) VALUES (?, ?, ?)";
+		String query = "INSERT INTO public.service(date, serviceDescription, idcliente_fk) VALUES (?, ?, ?)";
 
 		try {
 			getPreparedStatement(query);
 
 			ps.setDate(1, service.getDate());
-			ps.setString(2, service.getServiceType());
+			ps.setString(2, service.getServiceDescription());
 			ps.setInt(3, service.getClient().getId());
 
 			ps.executeUpdate();
@@ -37,7 +37,7 @@ public class ServiceDAO extends DataBase<Service, Serializable>  {
 
 	public List<Service> listServices() {
 
-		String query = "SELECT serviceType, date, id, idcliente_fk FROM public.service;";
+		String query = "SELECT serviceDescription, date, id, idcliente_fk FROM public.service;";
 		List<Service> services = new ArrayList<>();
 		try {
 			getPreparedStatement(query);
@@ -48,7 +48,7 @@ public class ServiceDAO extends DataBase<Service, Serializable>  {
 
 				Service service = new Service();
 				service.setDate(rs.getDate("date"));
-				service.setServiceType(rs.getString("serviceType"));
+				service.setServiceDescription(rs.getString("serviceDescription"));
 				service.setClient(getClient(rs.getInt("idcliente_fk")));
 				
 				services.add(service);
@@ -66,7 +66,7 @@ public class ServiceDAO extends DataBase<Service, Serializable>  {
 
 	public Client getClient(int id) {
 		Client client = null;
-		String query = "SELECT documentType, documentNumber, name, phone FROM public.client where id = " + id;
+		String query = "SELECT documentType, documentNumber, name, address, phone FROM public.client where id = " + id;
 		try {
 			getPreparedStatement(query);
 
@@ -77,6 +77,7 @@ public class ServiceDAO extends DataBase<Service, Serializable>  {
 				client.setDocumentType(rs.getString("documentType"));
 				client.setDocumentNumber(rs.getString("documentNumber"));
 				client.setName(rs.getString("name"));
+				client.setAddress(rs.getString("address"));
 				client.setPhone(rs.getString("phone"));
 			}
 		} catch (Exception e) {

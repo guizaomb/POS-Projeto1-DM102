@@ -22,8 +22,8 @@ public class ServiceCalls {
 		System.out.println("* Digite o código do cliente: ");
 		service.setClient(serviceDAO.getClient(Integer.parseInt(in.nextLine())));	
 
-		System.out.println("* Qual é o tipo de chamado: ");
-		service.setServiceType(in.nextLine());
+		System.out.println("* Descreva o chamado: ");
+		service.setServiceDescription(in.nextLine());
 
 		serviceDAO.newService(service);
 		
@@ -43,7 +43,7 @@ public class ServiceCalls {
 			System.out.println("* Documento: " +service.getClient().getDocumentType());
 			System.out.println("* Telefone: " +service.getClient().getPhone());
 			System.out.println("* Data do Serviço: " +service.getDate());
-			System.out.println("* Tipo do Serviço" +service.getServiceType());
+			System.out.println("* Descrição do Serviço" +service.getServiceDescription());
 		}
 		System.out.println("\n\n");
 	}

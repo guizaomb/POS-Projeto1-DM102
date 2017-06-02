@@ -6,6 +6,7 @@ public class Client {
 	private String documentType;
 	private String documentNumber;
 	private String name;
+	private String address;
 	private String phone;
 	
 	
@@ -41,6 +42,12 @@ public class Client {
 	}
 	public void setDocumentNumber(String documentNumber) {
 		this.documentNumber = documentNumber;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 	

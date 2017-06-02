@@ -22,7 +22,7 @@ public abstract class DataBase<T, ID extends Serializable> {
 	public DataBase() {
 		this.driverClass = "org.postgresql.Driver";
 		this.dbURL = "jdbc:postgresql:";
-		this.dbName = "DM102";
+		this.dbName = "Projeto1-DM102";
 		this.user = "postgres";
 		this.passwd = "admin";
 	}

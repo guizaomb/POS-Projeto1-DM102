@@ -10,9 +10,9 @@ import br.com.inatel.pos.dm102.dao.DataBase;
 
 public class ClientDAO extends DataBase<Client, Serializable>  {
 
-	public void newClient(Client client) {
+	public void saveClient(Client client) {
 
-		String query = "INSERT INTO public.client(documentType, documentNumber, name, phone) VALUES (?, ?, ?, ?) returning id";
+		String query = "INSERT INTO public.client(documentType, documentNumber, name, address phone) VALUES (?, ?, ?, ?) returning id";
 
 		try {
 			getPreparedStatement(query);
@@ -20,7 +20,8 @@ public class ClientDAO extends DataBase<Client, Serializable>  {
 			ps.setString(1, client.getDocumentType());
 			ps.setString(2, client.getDocumentNumber());
 			ps.setString(3, client.getName());
-			ps.setString(4, client.getPhone());
+			ps.setString(4, client.getAddress());
+			ps.setString(5, client.getPhone());
 
 			ResultSet rs = ps.executeQuery();
 			rs.next();
@@ -34,7 +35,7 @@ public class ClientDAO extends DataBase<Client, Serializable>  {
 
 	public List<Client> listClients() {
 
-		String query = "SELECT documentType, documentNumber, name, phone FROM public.client;";
+		String query = "SELECT documentType, documentNumber, name, address, phone FROM public.client;";
 		List<Client> clients = new ArrayList<>();
 		try {
 			getPreparedStatement(query);
@@ -47,6 +48,7 @@ public class ClientDAO extends DataBase<Client, Serializable>  {
 				client.setDocumentType(rs.getString("documentType"));
 				client.setDocumentNumber(rs.getString("documentNumber"));
 				client.setName(rs.getString("name"));
+				client.setAddress(rs.getString("address"));
 				client.setPhone(rs.getString("phone"));
 				
 				clients.add(client);

@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Service {
 	private Integer id;
-	private String serviceType;
+	private String serviceDescription;
 	private Client client;
 	private Date date;
 	
@@ -19,11 +19,11 @@ public class Service {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getServiceType() {
-		return serviceType;
+	public String getServiceDescription() {
+		return serviceDescription;
 	}
-	public void setServiceType(String serviceType) {
-		this.serviceType = serviceType;
+	public void setServiceDescription(String serviceDescription) {
+		this.serviceDescription = serviceDescription;
 	}
 	public Client getClient() {
 		return client;
